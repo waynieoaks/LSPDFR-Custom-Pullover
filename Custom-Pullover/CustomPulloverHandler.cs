@@ -188,7 +188,7 @@ namespace Custom_Pullover
             {
                 Game.LogTrivial("Custom Pullover has been loaded successfully! [CustomPulloverHandler.cs-201]");
                 GameFiber.Wait(6000);
-                Game.DisplayNotification("~b~Custom Pullover~b~ " + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " by Waynieoaks");
+                Game.DisplayNotification("~b~Custom Pullover~b~ " + Assembly.GetExecutingAssembly().GetName().Version.ToString() );
                 mainLoop();
                 
             });
