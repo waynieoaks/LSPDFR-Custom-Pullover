@@ -7,9 +7,11 @@ While this plugin is still alive, and maintained in Open Source, a lot of its fe
 
 Custom Pullover allows just that. Once the suspect comes to a stop, you can then select from 3 options using your hot keys: 
 
-<b>Mimic me:</b> The car movements will mimic the movements made by your vehicle
-<b>Follow me:</b> Pull in front and the suspect will follow you to a new location 
-<b>Custom location:</b> Use the number keys (or what you set in the ini file) to choose a point in front for the suspect to move to
+<ul>
+<li><b>Mimic me:</b> The car movements will mimic the movements made by your vehicle
+<li><b>Follow me:</b> Pull in front and the suspect will follow you to a new location 
+<li><b>Custom location:</b> Use the number keys (or what you set in the ini file) to choose a point in front for the suspect to move to
+</ul>
 
 While I did this just for myself, to make my LSPDFR experience a little better - some friends have asked for a copy. So with Albo1125's blessing I release this here for anyone not using Traffic Policer and missing this feature to use as well. 
 
