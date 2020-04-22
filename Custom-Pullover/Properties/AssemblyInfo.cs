@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Waynieoaks")]
 [assembly: AssemblyProduct("Custom Pullover")]
-[assembly: AssemblyCopyright("Core code Copyright ©  2016-2019 - Albo1125, updates Copyright ©  2019-2020 - Waynieoaks")]
+[assembly: AssemblyCopyright("Core code Copyright ©  2016-2019 - Albo1125, updates Copyright © 2020 - Waynieoaks")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
