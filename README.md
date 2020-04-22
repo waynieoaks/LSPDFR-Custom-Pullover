@@ -3,7 +3,7 @@ A plugin for LSPDFR to aid in pulling over of suspects. This is built from Traff
 
 <b>Full disclosure:</b> I did not write the code for this plugin. This code is taken from a great plugin that enhanced LSPDFR written by Albo1125 called Traffic Policer.
 
-While this plugin is still alive, and maintained in Open Source, a lot of its features haove now been replaced with newer plugins. There was one feature I really missed, and that was the ability to correct a bad pullover by the AI. 
+While Traffic Policer is still alive, and maintained in Open Source, a lot of its features have now been replaced with newer plugins. There was one feature I really missed, and that was the ability to correct a bad pullover by the AI. 
 
 Custom Pullover allows just that. Once the suspect comes to a stop, you can then select from 3 options using your hot keys: 
 
