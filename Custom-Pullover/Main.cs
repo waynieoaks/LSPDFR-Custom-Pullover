@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Rage;
-using Rage.Native;
-using System.Threading.Tasks;
-using System.Xml;
-using System.IO;
+﻿using Rage.Native;
 using System.Reflection;
 
 namespace Custom_Pullover
@@ -14,9 +6,6 @@ namespace Custom_Pullover
 
     using LSPD_First_Response.Mod.API;
     using Rage;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.IO;
     using System.Windows.Forms;
 
     internal class Main : Plugin
@@ -110,7 +99,9 @@ namespace Custom_Pullover
 
         public static bool IsPointOnWater(this Vector3 position)
         {
+#pragma warning disable IDE0018 // Inline variable declaration
             float height;
+#pragma warning restore IDE0018 // Inline variable declaration
             return NativeFunction.Natives.GET_WATER_HEIGHT<bool>(position.X, position.Y, position.Z, out height);
         }
 

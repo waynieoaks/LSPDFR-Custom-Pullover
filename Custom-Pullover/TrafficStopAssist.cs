@@ -10,14 +10,14 @@ namespace Custom_Pullover
 {
     internal static class TrafficStopAssist
     {
-        private static uint notHandle;
-        private static Blip blip;
+        // private static uint notHandle;
+         private static Blip blip;
         private static string[] numbers = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         private static int CheckPoint = 0;
         public static void SetCustomPulloverLocation()
         {
-            CustomPulloverHandler.isSomeoneFollowing = true;
+            CustomPulloverHandler.IsSomeoneFollowing = true;
             GameFiber.StartNew(delegate
             {
                 try
@@ -25,13 +25,13 @@ namespace Custom_Pullover
 
                     if (!Functions.IsPlayerPerformingPullover())
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
 
                     if (!Game.LocalPlayer.Character.IsInAnyVehicle(false))
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     Vehicle playerCar = Game.LocalPlayer.Character.CurrentVehicle;
@@ -39,19 +39,19 @@ namespace Custom_Pullover
                     if (stoppedCar == null)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're behind the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (!stoppedCar.IsValid() || (stoppedCar == playerCar))
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're behind the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (stoppedCar.Speed > 0.2f && !ExtensionMethods.IsPointOnWater(stoppedCar.Position))
                     {
                         Game.DisplayNotification("The vehicle must be stopped before you can do this.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     string modelName = stoppedCar.Model.Name.ToLower();
@@ -64,7 +64,7 @@ namespace Custom_Pullover
                     if (!pulledDriver.IsPersistent || Functions.GetPulloverSuspect(Functions.GetCurrentPullover()) != pulledDriver)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're in front of the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
 
@@ -83,7 +83,7 @@ namespace Custom_Pullover
                         GameFiber.Wait(70);
                         Game.DisplaySubtitle("Set your desired pullover location. Hold ~b~Enter ~s~when done.", 100);
                         CheckPointPosition = Game.LocalPlayer.Character.GetOffsetPosition(new Vector3((float)xOffset + 0.5f, (float)(yOffset + 8), (float)(-1 + zOffset)));
-                        if (!CustomPulloverHandler.isSomeoneFollowing)
+                        if (!CustomPulloverHandler.IsSomeoneFollowing)
                         {
                             break;
                         }
@@ -161,7 +161,7 @@ namespace Custom_Pullover
                             {
                                 break;
                             }
-                            if (!CustomPulloverHandler.isSomeoneFollowing) { break; }
+                            if (!CustomPulloverHandler.IsSomeoneFollowing) { break; }
                             Rage.Task drivetask = pulledDriver.Tasks.DriveToPosition(CheckPointPosition, 12f, VehicleDrivingFlags.DriveAroundVehicles | VehicleDrivingFlags.DriveAroundObjects | VehicleDrivingFlags.AllowMedianCrossing | VehicleDrivingFlags.YieldToCrossingPedestrians);
                             GameFiber.Wait(700);
                             if (!drivetask.IsActive) { break; }
@@ -192,7 +192,7 @@ namespace Custom_Pullover
                 }
                 finally
                 {
-                    CustomPulloverHandler.isSomeoneFollowing = false;
+                    CustomPulloverHandler.IsSomeoneFollowing = false;
                 }
 
 
@@ -201,9 +201,9 @@ namespace Custom_Pullover
         }
 
 
-        public static void mimicMe()
+        public static void MimicMe()
         {
-            CustomPulloverHandler.isSomeoneFollowing = true;
+            CustomPulloverHandler.IsSomeoneFollowing = true;
             GameFiber.StartNew(delegate
             {
                 try
@@ -211,13 +211,13 @@ namespace Custom_Pullover
                     //Safety checks
                     if (!Functions.IsPlayerPerformingPullover())
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     Game.LogTrivial("Mimicking");
                     if (!Game.LocalPlayer.Character.IsInAnyVehicle(false))
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     Vehicle playerCar = Game.LocalPlayer.Character.CurrentVehicle;
@@ -225,19 +225,19 @@ namespace Custom_Pullover
                     if (stoppedCar == null)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're behind the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (!stoppedCar.IsValid() || (stoppedCar == playerCar))
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're behind the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (stoppedCar.Speed > 0.2f && !ExtensionMethods.IsPointOnWater(stoppedCar.Position))
                     {
                         Game.DisplayNotification("The vehicle must be stopped before they can mimic you.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     string modelName = stoppedCar.Model.Name.ToLower();
@@ -250,7 +250,7 @@ namespace Custom_Pullover
                     if (!pulledDriver.IsPersistent || Functions.GetPulloverSuspect(Functions.GetCurrentPullover()) != pulledDriver)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're in front of the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
 
@@ -261,7 +261,7 @@ namespace Custom_Pullover
                     playerCar.BlipSiren(true);
 
                     Game.DisplayNotification("The blipped ~r~" + modelName + "~s~ is now mimicking you.");
-                    Game.DisplayNotification("Press ~b~" + ExtensionMethods.GetKeyString(CustomPulloverHandler.trafficStopMimicKey, CustomPulloverHandler.trafficStopMimicModifierKey) + " ~s~to stop the ~r~" + modelName + ".");
+                    Game.DisplayNotification("Press ~b~" + ExtensionMethods.GetKeyString(CustomPulloverHandler.TrafficStopMimicKey, CustomPulloverHandler.TrafficStopMimicModifierKey) + " ~s~to stop the ~r~" + modelName + ".");
                     try
                     {
                         Game.LocalPlayer.Character.Tasks.PlayAnimation("friends@frj@ig_1", "wave_c", 1f, AnimationFlags.SecondaryTask | AnimationFlags.UpperBodyOnly);
@@ -295,7 +295,7 @@ namespace Custom_Pullover
 
                         GameFiber.Sleep(60);
 
-                        if (!CustomPulloverHandler.isSomeoneFollowing)
+                        if (!CustomPulloverHandler.IsSomeoneFollowing)
                         {
                             break;
                         
@@ -348,7 +348,7 @@ namespace Custom_Pullover
                 }
                 finally
                 {
-                    CustomPulloverHandler.isSomeoneFollowing = false;
+                    CustomPulloverHandler.IsSomeoneFollowing = false;
                 }
 
 
@@ -356,23 +356,23 @@ namespace Custom_Pullover
             });
         }
 
-        public static void followMe()
+        public static void FollowMe()
         {
-            CustomPulloverHandler.isSomeoneFollowing = true;
+            CustomPulloverHandler.IsSomeoneFollowing = true;
             GameFiber.StartNew(delegate
             {
                 try
                 {
                     if (!Functions.IsPlayerPerformingPullover())
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     Game.LogTrivial("Following");
                     Ped playerPed = Game.LocalPlayer.Character;
                     if (!playerPed.IsInAnyVehicle(false))
                     {
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
 
@@ -382,19 +382,19 @@ namespace Custom_Pullover
                     if (stoppedCar == null)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're in front of the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (!stoppedCar.IsValid() || (stoppedCar == playerCar))
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're in front of the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     if (stoppedCar.Speed > 0.2f && !ExtensionMethods.IsPointOnWater(stoppedCar.Position))
                     {
                         Game.DisplayNotification("The vehicle must be stopped before they can follow you.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     string modelName = stoppedCar.Model.Name.ToLower();
@@ -407,7 +407,7 @@ namespace Custom_Pullover
                     if (!pulledDriver.IsPersistent || Functions.GetPulloverSuspect(Functions.GetCurrentPullover()) != pulledDriver)
                     {
                         Game.DisplayNotification("Unable to detect the pulled over vehicle. Make sure you're in front of the vehicle and try again.");
-                        CustomPulloverHandler.isSomeoneFollowing = false;
+                        CustomPulloverHandler.IsSomeoneFollowing = false;
                         return;
                     }
                     Blip blip = pulledDriver.AttachBlip();
@@ -417,7 +417,7 @@ namespace Custom_Pullover
                     pulledDriver.Tasks.DriveToPosition(playerCar.GetOffsetPosition(Vector3.RelativeBack * 3f), 7f, VehicleDrivingFlags.FollowTraffic | VehicleDrivingFlags.YieldToCrossingPedestrians);
 
                     Game.DisplayNotification("The blipped ~r~" + modelName + "~s~ is now following you.");
-                    Game.DisplayNotification("Press ~b~" + ExtensionMethods.GetKeyString(CustomPulloverHandler.trafficStopFollowKey, CustomPulloverHandler.trafficStopFollowModifierKey) + " ~s~to stop the ~r~" + modelName + ".");
+                    Game.DisplayNotification("Press ~b~" + ExtensionMethods.GetKeyString(CustomPulloverHandler.TrafficStopFollowKey, CustomPulloverHandler.TrafficStopFollowModifierKey) + " ~s~to stop the ~r~" + modelName + ".");
                     try
                     {
                         playerPed.Tasks.PlayAnimation("friends@frj@ig_1", "wave_c", 1f, AnimationFlags.SecondaryTask | AnimationFlags.UpperBodyOnly);
@@ -431,7 +431,7 @@ namespace Custom_Pullover
                         pulledDriver.Tasks.DriveToPosition(playerCar.GetOffsetPosition(Vector3.RelativeBack * 3f), speed, VehicleDrivingFlags.IgnorePathFinding);
                         GameFiber.Sleep(60);
 
-                        if (!CustomPulloverHandler.isSomeoneFollowing)
+                        if (!CustomPulloverHandler.IsSomeoneFollowing)
                         {
                             break;
                         }
@@ -483,12 +483,12 @@ namespace Custom_Pullover
                 }
                 finally
                 {
-                    CustomPulloverHandler.isSomeoneFollowing = false;
+                    CustomPulloverHandler.IsSomeoneFollowing = false;
                 }
             });
         }
 
-        public static void checkForYieldDisable()
+        public static void CheckForYieldDisable()
         {
             Ped playerPed = Game.LocalPlayer.Character;
             if (!playerPed) { return; }
@@ -578,9 +578,9 @@ namespace Custom_Pullover
             }
         }
 
-        public static void checkForceRedLightRun()
+        public static void CheckForceRedLightRun()
         {
-            CustomPulloverHandler.isSomeoneRunningTheLight = true;
+            CustomPulloverHandler.IsSomeoneRunningTheLight = true;
 
             try
             {
@@ -615,7 +615,7 @@ namespace Custom_Pullover
             }
             finally
             {
-                CustomPulloverHandler.isSomeoneRunningTheLight = false;
+                CustomPulloverHandler.IsSomeoneRunningTheLight = false;
             }
 
 

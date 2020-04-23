@@ -19,33 +19,33 @@ namespace Custom_Pullover
     internal class CustomPulloverHandler
     {
 
-        private static void loadValuesFromIniFile()
+        private static void LoadValuesFromIniFile()
         {
             try
             {
-                trafficStopFollowKey = (Keys)kc.ConvertFromString(getTrafficStopFollowKey());
-                trafficStopFollowModifierKey = (Keys)kc.ConvertFromString(getTrafficStopFollowModifierKey());
-                trafficStopMimicKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "TrafficStopMimicKey"));
-                trafficStopMimicModifierKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "TrafficStopMimicModifierKey"));
-                IniDefaults.PositionUpKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionUpKey", "NumPad9"));
-                IniDefaults.PositionRightKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionRightKey", "NumPad6"));
-                IniDefaults.PositionResetKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionResetKey", "NumPad5"));
-                IniDefaults.PositionLeftKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionLeftKey", "NumPad4"));
-                IniDefaults.PositionForwardKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionForwardKey", "NumPad8"));
-                IniDefaults.PositionDownKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionDownKey", "NumPad3"));
-                IniDefaults.PositionBackwardKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "PositionBackwardKey", "NumPad2"));
-                TrafficStopAssist.VehicleDoorLockDistance = initialiseFile().ReadSingle("Features", "VehicleDoorLockDistance", 5.2f);
-                TrafficStopAssist.VehicleDoorUnlockDistance = initialiseFile().ReadSingle("Features", "VehicleDoorUnlockDistance", 3.5f);
-                AutoVehicleDoorLock = initialiseFile().ReadBoolean("Features", "AutoVehicleDoorLock", true);
-                CustomPulloverLocationKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "CustomPulloverLocationKey", "W"));
-                CustomPulloverLocationModifierKey = (Keys)kc.ConvertFromString(initialiseFile().ReadString("Keybindings", "CustomPulloverLocationModifierKey", "LControlKey"));
+                TrafficStopFollowKey = (Keys)kc.ConvertFromString(GetTrafficStopFollowKey());
+                TrafficStopFollowModifierKey = (Keys)kc.ConvertFromString(GetTrafficStopFollowModifierKey());
+                TrafficStopMimicKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "TrafficStopMimicKey"));
+                TrafficStopMimicModifierKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "TrafficStopMimicModifierKey"));
+                IniDefaults.PositionUpKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionUpKey", "NumPad9"));
+                IniDefaults.PositionRightKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionRightKey", "NumPad6"));
+                IniDefaults.PositionResetKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionResetKey", "NumPad5"));
+                IniDefaults.PositionLeftKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionLeftKey", "NumPad4"));
+                IniDefaults.PositionForwardKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionForwardKey", "NumPad8"));
+                IniDefaults.PositionDownKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionDownKey", "NumPad3"));
+                IniDefaults.PositionBackwardKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "PositionBackwardKey", "NumPad2"));
+                TrafficStopAssist.VehicleDoorLockDistance = InitialiseFile().ReadSingle("Features", "VehicleDoorLockDistance", 5.2f);
+                TrafficStopAssist.VehicleDoorUnlockDistance = InitialiseFile().ReadSingle("Features", "VehicleDoorUnlockDistance", 3.5f);
+                AutoVehicleDoorLock = InitialiseFile().ReadBoolean("Features", "AutoVehicleDoorLock", true);
+                CustomPulloverLocationKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "CustomPulloverLocationKey", "W"));
+                CustomPulloverLocationModifierKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "CustomPulloverLocationModifierKey", "LControlKey"));
             }
             catch (Exception e)
             {
-                trafficStopFollowKey = Keys.T;
-                trafficStopFollowModifierKey = Keys.LControlKey;
-                trafficStopMimicKey = Keys.R;
-                trafficStopMimicModifierKey = Keys.LControlKey;
+                TrafficStopFollowKey = Keys.T;
+                TrafficStopFollowModifierKey = Keys.LControlKey;
+                TrafficStopMimicKey = Keys.R;
+                TrafficStopMimicModifierKey = Keys.LControlKey;
                 Game.LogTrivial(e.ToString());
                 Game.LogTrivial("Loading default Custom Pullover INI file - Error detected in user's INI file.");
                 Game.DisplayNotification("~r~~h~Error~s~ reading Custom Pullover ini file. Default values set; replace with default INI file!");
@@ -54,26 +54,26 @@ namespace Custom_Pullover
         }
         public static Keys CustomPulloverLocationKey = Keys.W;
         public static Keys CustomPulloverLocationModifierKey = Keys.LControlKey;
-        public static Keys trafficStopMimicModifierKey { get; set; }
+        public static Keys TrafficStopMimicModifierKey { get; set; }
         public static KeysConverter kc = new KeysConverter();
-        public static Keys trafficStopFollowModifierKey { get; set; }
-        public static Keys trafficStopFollowKey { get; set; }
+        public static Keys TrafficStopFollowModifierKey { get; set; }
+        public static Keys TrafficStopFollowKey { get; set; }
         // private static Keys parkModifierKey { get; set; }
-        public static bool isSomeoneRunningTheLight { get; set; }
-        public static bool isSomeoneFollowing { get; set; }
-        public static Keys trafficStopMimicKey { get; set; }
+        public static bool IsSomeoneRunningTheLight { get; set; }
+        public static bool IsSomeoneFollowing { get; set; }
+        public static Keys TrafficStopMimicKey { get; set; }
 
         public static bool AutoVehicleDoorLock = true;
 
-        internal static void mainLoop()
+        internal static void MainLoop()
         {
             Game.LogTrivial("Custom Pullover.Mainloop started");
             
             Game.LogTrivial("Loading Custom Pullover settings...");
-            loadValuesFromIniFile();
+            LoadValuesFromIniFile();
 
-            isSomeoneFollowing = false;
-            isSomeoneRunningTheLight = false;
+            IsSomeoneFollowing = false;
+            IsSomeoneRunningTheLight = false;
 
             GameFiber.StartNew(delegate
             {
@@ -83,28 +83,28 @@ namespace Custom_Pullover
                     if (Functions.IsPlayerPerformingPullover())
                     {
 
-                        if (ExtensionMethods.IsKeyDownRightNowComputerCheck(trafficStopFollowModifierKey) || (trafficStopFollowModifierKey == Keys.None))
+                        if (ExtensionMethods.IsKeyDownRightNowComputerCheck(TrafficStopFollowModifierKey) || (TrafficStopFollowModifierKey == Keys.None))
                         {
-                            if (ExtensionMethods.IsKeyDownComputerCheck(trafficStopFollowKey))
+                            if (ExtensionMethods.IsKeyDownComputerCheck(TrafficStopFollowKey))
                             {
-                                if (!isSomeoneFollowing)
+                                if (!IsSomeoneFollowing)
                                 {
-                                    TrafficStopAssist.followMe();
+                                    TrafficStopAssist.FollowMe();
                                 }
-                                else { isSomeoneFollowing = false; }
+                                else { IsSomeoneFollowing = false; }
                             }
                         }
-                        if (ExtensionMethods.IsKeyDownRightNowComputerCheck(trafficStopMimicModifierKey) || (trafficStopMimicModifierKey == Keys.None))
+                        if (ExtensionMethods.IsKeyDownRightNowComputerCheck(TrafficStopMimicModifierKey) || (TrafficStopMimicModifierKey == Keys.None))
                         {
-                            if (ExtensionMethods.IsKeyDownComputerCheck(trafficStopMimicKey))
+                            if (ExtensionMethods.IsKeyDownComputerCheck(TrafficStopMimicKey))
                             {
-                                if (!isSomeoneFollowing)
+                                if (!IsSomeoneFollowing)
                                 {
-                                    TrafficStopAssist.mimicMe();
+                                    TrafficStopAssist.MimicMe();
                                 }
                                 else
                                 {
-                                    isSomeoneFollowing = false;
+                                    IsSomeoneFollowing = false;
                                 }
                             }
                         }
@@ -112,7 +112,7 @@ namespace Custom_Pullover
                         {
                             if (ExtensionMethods.IsKeyDownComputerCheck(CustomPulloverLocationKey))
                             {
-                                if (!isSomeoneFollowing)
+                                if (!IsSomeoneFollowing)
                                 {
                                     TrafficStopAssist.SetCustomPulloverLocation();
                                 }
@@ -123,9 +123,9 @@ namespace Custom_Pullover
                             }
                         }
 
-                        if (!isSomeoneRunningTheLight)
+                        if (!IsSomeoneRunningTheLight)
                         {
-                            TrafficStopAssist.checkForceRedLightRun();
+                            TrafficStopAssist.CheckForceRedLightRun();
                         }
                     }
                 }
@@ -134,7 +134,7 @@ namespace Custom_Pullover
             while (true)
             {
                 GameFiber.Yield();
-                TrafficStopAssist.checkForYieldDisable();
+                TrafficStopAssist.CheckForYieldDisable();
                 if (AutoVehicleDoorLock)
                 {
                     TrafficStopAssist.LockPlayerDoors();
@@ -158,7 +158,7 @@ namespace Custom_Pullover
 
         public static Assembly LSPDFRResolveEventHandler(object sender, ResolveEventArgs args) { foreach (Assembly assembly in Functions.GetAllUserPlugins()) { if (args.Name.ToLower().Contains(assembly.GetName().Name.ToLower())) { return assembly; } } return null; }
 
-        public static InitializationFile initialiseFile()
+        public static InitializationFile InitialiseFile()
         {
             InitializationFile ini = new InitializationFile("Plugins/LSPDFR/Custom Pullover.ini");
             ini.Create();
@@ -167,15 +167,15 @@ namespace Custom_Pullover
         
         }
 
-        private static string getTrafficStopFollowKey()
+        private static string GetTrafficStopFollowKey()
         {
-            InitializationFile ini = initialiseFile();
+            InitializationFile ini = InitialiseFile();
             string key = ini.ReadString("Keybindings", "TrafficStopFollowKey", "T");
             return key;
         }
-        private static string getTrafficStopFollowModifierKey()
+        private static string GetTrafficStopFollowModifierKey()
         {
-            InitializationFile ini = initialiseFile();
+            InitializationFile ini = InitialiseFile();
             string key = ini.ReadString("Keybindings", "TrafficStopFollowModifierKey", "LControlKey");
             return key;
         }
@@ -189,7 +189,7 @@ namespace Custom_Pullover
                 Game.LogTrivial("Custom Pullover has been loaded successfully! [CustomPulloverHandler.cs-201]");
                 GameFiber.Wait(6000);
                 Game.DisplayNotification("~b~Custom Pullover~b~ " + Assembly.GetExecutingAssembly().GetName().Version.ToString() );
-                mainLoop();
+                MainLoop();
                 
             });
         }

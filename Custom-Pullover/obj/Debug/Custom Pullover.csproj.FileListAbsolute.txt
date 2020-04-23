@@ -1,0 +1,13 @@
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\Custom Pullover.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\Custom Pullover.pdb
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\LSPD First Response.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\RAGENativeUI.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\RagePluginHookSDK.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\LSPD First Response.pdb
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\RAGENativeUI.xml
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\bin\Debug\RagePluginHookSDK.xml
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\obj\Debug\Custom Pullover.csprojAssemblyReference.cache
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\obj\Debug\Custom Pullover.csproj.CopyComplete
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\obj\Debug\Custom Pullover.dll
+E:\repositories\LSPDFR-Custom-Pullover\Custom-Pullover\obj\Debug\Custom Pullover.pdb
