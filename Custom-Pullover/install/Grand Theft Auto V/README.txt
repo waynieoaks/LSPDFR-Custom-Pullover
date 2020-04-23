@@ -20,6 +20,6 @@ Traffic Policer, by Albo1125: https://www.lcpdfr.com/downloads/gta5mods/scripts/
 Traffic Policer Git Hub: https://github.com/Albo1125/Traffic-Policer
 
 Installation:
-1. the contents of the plugins folder into your GTA 5 install folder 
+1. Copy the plugins folder into your "Grand Theft Auto V" install folder 
 2. Edit the keybindings in the .ini to meet your requirements
 
