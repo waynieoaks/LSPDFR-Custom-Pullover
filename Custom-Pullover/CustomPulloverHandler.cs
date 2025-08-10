@@ -37,6 +37,7 @@ namespace Custom_Pullover
                 TrafficStopAssist.VehicleDoorLockDistance = InitialiseFile().ReadSingle("Features", "VehicleDoorLockDistance", 5.2f);
                 TrafficStopAssist.VehicleDoorUnlockDistance = InitialiseFile().ReadSingle("Features", "VehicleDoorUnlockDistance", 3.5f);
                 AutoVehicleDoorLock = InitialiseFile().ReadBoolean("Features", "AutoVehicleDoorLock", true);
+                TrafficStopAIYieldEnabled = InitialiseFile().ReadBoolean("Features", "TrafficStopAIYieldEnabled", false);
                 CustomPulloverLocationKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "CustomPulloverLocationKey", "W"));
                 CustomPulloverLocationModifierKey = (Keys)kc.ConvertFromString(InitialiseFile().ReadString("Keybindings", "CustomPulloverLocationModifierKey", "LControlKey"));
             }
@@ -64,6 +65,7 @@ namespace Custom_Pullover
         public static Keys TrafficStopMimicKey { get; set; }
 
         public static bool AutoVehicleDoorLock = true;
+        public static bool TrafficStopAIYieldEnabled = false;
 
         internal static void MainLoop()
         {
@@ -134,7 +136,11 @@ namespace Custom_Pullover
             while (true)
             {
                 GameFiber.Yield();
-                TrafficStopAssist.CheckForYieldDisable();
+                if (TrafficStopAIYieldEnabled)
+                {
+                    TrafficStopAssist.CheckForYieldDisable();
+                }
+
                 if (AutoVehicleDoorLock)
                 {
                     TrafficStopAssist.LockPlayerDoors();
